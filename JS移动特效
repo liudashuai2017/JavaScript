@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-03移动效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            background: url('images/bg.png') no-repeat;
+            background-size: cover;
+            font-size: 13px;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        /*登录框*/
+        #box{
+            width: 400px;
+            height: 400px;
+            background-color: white;
+            box-shadow: -10px 20px 100px black;
+            position: relative;
+            margin: 50px auto;
+            /*top:50%;*/
+            /*left:50%;*/
+            /*transform: translate(-50%,-50%);*/
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        /*头部*/
+        #box .top{
+            width: 100%;
+            height: 64px;
+            background: orange;
+            line-height: 64px;
+            color: white;
+            margin-bottom: 10px;
+        /*鼠标样式*/
+            cursor: move;
+        }
+        /*中间*/
+        #box .content{
+            padding: 20px;
+        }
+        .content .admin_pwd{
+            height: 40px;
+            margin-bottom:15px;
+            position: relative;
+        }
+        .content .admin_pwd img{
+            position: absolute;
+            top: 7px;
+            left: 6px;
+        }
+        .content .admin_pwd input{
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            padding-left: 38px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .content .admin_pwd input:focus{
+            /*轮廓*/
+            outline: none;
+            border: 1px solid orange;
+            box-shadow: 0 0 10px orange;
+        }
+        /*默认*/
+        .content .setting{
+            width: 100%;
+            height: 30px;
+        }
+        .content .setting a{
+            color: darkgray;
+            float: left;
+        }
+        .content .setting a.setting_right{
+            float: right;
+        }
+        /*登录*/
+        .content .btn1{
+            margin: 15px 0;
+            width: 100%;
+            height: 38px;
+            color: white;
+            border:none;
+            font-size: 20px;
+            border-radius: 5px;
+            background-color: orange;
+            cursor: pointer;
+        }
+        .content .btn1:focus{
+            outline: none;
+        }
+        /*注册*/
+        .content .reg{
+            margin-bottom: 15px;
+            color: darkgray;
+        }
+        .content .reg a{
+            color: orange;
+        }
+        /*底部*/
+        .bottom{
+            height: 44px;
+            line-height: 44px;
+            padding: 0 20px;
+        }
+        .bottom img{
+            width: 30px;
+            /*垂直居中*/
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<!--登录框-->
+<div id="box">
+    <!--头部-->
+    <div class="top">
+        <h2>SeeMyGo教育系统</h2>
+    </div>
+    <!--身体-->
+    <div class="content">
+        <!--账号-->
+        <div class="admin_pwd">
+            <img src="images/icon_people.png" alt="">
+            <input type="text" placeholder="请输入用户名/手机号" name="admin">
+        </div>
+        <!--密码-->
+        <div class="admin_pwd">
+            <img src="images/icon_password.png" alt="">
+            <input type="text" placeholder="请输入密码" name="admin">
+        </div>
+        <!--默认-->
+        <div class="setting">
+            <a href="#"><input type="checkbox">自动登录</a>
+            <a href="#" class="setting_right">忘记密码？</a>
+        </div>
+        <!--登录-->
+        <button class="btn1">登 录</button>
+        <!--注册-->
+        <div class="reg">
+            还没账号？   <a href="#">立即注册</a>
+        </div>
+    </div>
+    <!--尾部-->
+    <div class="bottom">
+        <span>社交账号：</span>
+        <a href="#"><img src="images/weixin.png" alt=""></a>
+        <a href="#"><img src="images/qq.png" alt=""></a>
+        <a href="#"><img src="images/sina.png" alt=""></a>
+    </div>
+</div>
+<script>
+
+</script>
+</body>
+</html>
