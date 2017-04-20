@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-01对象</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 500px;
+            height: 500px;
+            background: red;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <span id="span1"></span>
+    <span id="span2"></span>
+    <span id="span3"></span>
+</div>
+<script>
+    var box = document.getElementById('box');
+    var span1 = document.getElementById('span1');
+    var span2 = document.getElementById('span2');
+    var span3 = document.getElementById('span3');
+    span1.style.width = '150px';
+    span1.style.height = '150px';
+    span1.style.background = 'blue';
+    span1.style.position = 'absolute';
+    span1.style.top = '0';
+    span1.style.left = '0';
+    span1.style.float = 'left';
+
+    span2.style['width'] = '100px';
+    span2.style['height'] = '100px';
+    span2.style['background'] ='pink';
+    span2.style.float = 'left';
+    span2.style.position = 'absolute';
+    span2.style.top = '0';
+    span2.style.right = '0';
+
+    var data = {
+        width : '200px',
+        height : '200px',
+        background : 'green',
+        float : 'left',
+        position : 'absolute',
+        bottom : 0,
+        left : 0
+    };
+    for (var key in data){
+        span3.style[key] = data[key];
+    }
+</script>
+</body>
+</html>

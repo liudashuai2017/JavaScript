@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-05发微博</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 600px;
+            margin: 100px auto;
+            border: 1px solid skyblue;
+            text-align: center;
+            padding: 20px 0 20px 0;
+            /*background-color: black;*/
+        }
+        #box textarea{
+            width: 400px;
+            height: 120px;
+            resize: none;
+        }
+        #box ul{
+            width: 400px;
+            margin-left: 60px;
+            text-align: left;
+        }
+        #box ul li{
+            list-style: none;
+            line-height: 30px;
+            border-bottom: 1px dashed #ccc;
+        }
+        #box ul li a{
+            float: right;
+            text-decoration: none;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    发微博：<textarea id="text1"></textarea>
+    <button id="btn">发布</button>
+    <ul id="oul"></ul>
+</div>
+<script>
+    var box = document.getElementById('box');
+    var text1 = box.children[0];
+    var btn = box.children[1];
+    var oul = box.children[2];
+    btn.onclick = function () {
+        var content = text1.value;
+        if(content == ''){
+//        无内容，返回
+            alert('请输入内容');
+            return;
+        }
+//        创建li
+        var oli = document.createElement('li');
+        var oa = document.createElement('a');
+        oa.innerHTML = '删除';
+        oli.innerHTML = text1.value;
+        oli.appendChild(oa);
+//        清除
+        text1.value = '';
+        oul.insertBefore(oli,oul.children[0]);
+        oa.onclick = function () {
+            oul.removeChild(this.parentNode);
+        }
+    }
+</script>
+</body>
+</html>

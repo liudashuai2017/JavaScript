@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-02</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    /**
+     * Created by wenya on 2017/4/3.
+     */
+    /**
+     * 通过id获取标签
+     * @param id
+     * @returns {Element}
+     */
+    function $(id) {
+        return typeof id === 'string' ? document.getElementById(id) : id;
+    }
+    /**
+     * 获取dom里面的标签
+     * @param dom
+     * @param tagName
+     * @returns {NodeList}
+     */
+    function getEleTagName(dom,tagName) {
+        return dom.getElementsByTagName(tagName);
+    }
+    // 遍历dom
+    function each(dom,fn) {
+        for(var i = 0; i<dom.length; i++){
+//            console.log(btns[i].innerHTML);
+            // 要做的事情我们并不知道,所以需要外界决定
+            fn(dom[i],i);
+        }
+    }
+</script>
+</body>
+</html>

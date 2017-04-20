@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-003天使</title>
+    <style>
+        span{
+            width: 96px;
+            height: 80px;
+            background: url('images/110.gif');
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<span id="angle"></span>
+<script>
+    var angle = document.getElementById('angle');
+    var timer = null;
+    var beginX = 0;
+    var beginY = 0;
+    document.onmousemove =function (eve) {
+        clearInterval(timer);
+        var event = eve || window.event;
+        var targetX = event.clientX;
+        var targetY = event.clientY;
+        timer = setInterval(function () {
+            beginX = beginX + (targetX - beginX)/3;
+            beginY = beginY + (targetY - beginY)/3;
+            angle.style.left = beginX + 'px';
+            angle.style.top = beginY + 'px';
+        },10)
+    }
+</script>
+</body>
+</html>
