@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-007美女竞价</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            border: 1px solid #000;
+            width: 180px;
+            height: 250px;
+            text-align: center;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img id="pic" src="images/competition.jpg" alt="">
+        <h2 id="bt">底价是1000元</h2>
+        <button id="btn">开始竞价</button>
+    </div>
+    <script>
+        var btn = document.getElementById("btn");
+        var bt = document.getElementById('bt');
+        btn.onclick = function() {
+            var price = prompt('请输入价格');
+            var priceNum = price * 1 ;
+            if (isNaN(priceNum) == false){
+                if (priceNum == 0){
+                }else if(priceNum >1000){
+                    bt.innerHTML = '低价是' + price + '元';
+                }else{
+                    alert('美女很值钱,请重新竞价');
+                }
+            }else {
+                alert('请输入数字');
+            }
+            console.log(typeof priceNum, priceNum);
+        }
+    </script>
+</body>
+</html>

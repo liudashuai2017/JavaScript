@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-008</title>
+</head>
+<body>
+<!--<select id="sel">-->
+    <!--<option value="春意盎然">春天</option>-->
+    <!--<option value="夏日炎炎">夏天</option>-->
+    <!--<option value="秋风瑟瑟">秋天</option>-->
+    <!--<option value="冬雪皑皑">冬天</option>-->
+<!--</select>-->
+    <select name="" id="sel">
+        <option >春天</option>
+        <option >夏天</option>
+        <option >秋天</option>
+        <option >冬天</option>
+    </select>
+<script>
+    var sel = document.getElementById('sel');
+    sel.onchange = function () {
+        var str = '' ;
+        switch (sel.value){
+            case '春天':
+                str = '春意盎然';
+                break;
+            case '夏天':
+                str = '夏日炎炎';
+                break;
+            case '秋天':
+                str = '秋风瑟瑟';
+                break;
+            case '冬天':
+                str = '冬雪皑皑';
+                break;
+            default:
+                str = '未知';
+        }
+        alert(str);
+    }
+</script>
+</body>
+</html>

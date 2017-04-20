@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-003</title>
+    <style>
+        #box{
+            background: red;
+            border: 1px solid #ccc;
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">求点求点</button>
+<div id="box"></div>
+<script>
+    var box= document.getElementById('box');
+    var btn= document.getElementById('btn');
+    btn.onclick = function () {
+        box.style.background = 'yellow';
+        box.style.border = '10px solid #ccc';
+        box.style.width = '400px';
+        box.style.height= '300px';
+    };
+    box.onclick = function () {
+        box.style.background = 'red';
+        box.style.border = '1px solid #ccc';
+        box.style.width = '400px';
+        box.style.height= '300px';
+    }
+</script>
+</body>
+</html>

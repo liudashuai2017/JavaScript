@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-021高级轮播</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 640px;
+            height: 270px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid skyblue;
+        }
+        #box ul{
+            list-style: none;
+            width: 9999px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #box ul li{
+            float: left;
+        }
+        #box span{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            display: inline-block;
+            text-align: center;
+            line-height: 40px;
+            color: skyblue;
+            cursor: pointer;
+            background: rgba(0,0,0,0.7);
+        }
+        #box span:nth-of-type(1){
+            left: 0;
+            top: 50%;
+            margin-top: -20px;
+        }
+        #box span:nth-of-type(2){
+            right: 0;
+            top: 50%;
+            margin-top: -20px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul id="oul">
+        <li><img src="images/01.jpg" alt=""></li>
+        <li><img src="images/02.jpg" alt=""></li>
+        <li><img src="images/03.jpg" alt=""></li>
+        <li><img src="images/04.jpg" alt=""></li>
+        <li><img src="images/05.jpg" alt=""></li>
+        <li><img src="images/01.jpg" alt=""></li>
+    </ul>
+    <span> &lt; </span>
+    <span> &gt; </span>
+</div>
+<script>
+    var spans = document.getElementById('box').getElementsByTagName('span');
+    var oul = document.getElementById('oul');
+    var timer = null;
+    var loop = 0;
+    var speed = 10;
+    var begin = 0;
+    var flag = true;
+    spans[1].onclick = function () {
+        if(flag == false)return;
+        flag = false;
+        loop++;
+        if(loop>5){
+           loop = 1;
+           begin= 0;
+        }
+        timer = setInterval(function () {
+            begin -= speed;
+            if(begin<= -640 * loop){
+                clearInterval(timer);
+                begin = -640 * loop;
+                flag = true;
+            }
+            oul.style.left = begin + 'px';
+        },10)
+    };
+    spans[0].onclick = function () {
+        if(flag == false)return;
+        flag = false;
+        loop--;
+        if(loop<0){
+            loop = 4;
+            begin = -640 * 5;
+        }
+        timer = setInterval(function () {
+            begin += speed;
+            if(begin>= -640 * loop){
+                clearInterval(timer);
+                begin = -640 * loop;
+                flag= true;
+            }
+            oul.style.left = begin + 'px';
+        },10);
+    }
+</script>
+</body>
+</html>

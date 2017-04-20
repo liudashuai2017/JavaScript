@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-025动态九宫格</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .new{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            position: absolute;
+            display: inline-block;
+            border-radius: 10px;
+        }
+        #bottom{
+            margin-top: 10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="top">
+    <button>添加</button>
+    <button>删除</button>
+</div>
+<div id="bottom"></div>
+</body>
+<script>
+    var btns = document.getElementById('box').getElementsByTagName('button');
+    var bottom = document.getElementById('bottom');
+    var array = [];
+    var count = 3;
+    var row = 0;
+    var col = 0;
+    var margin = 10;
+    btns[0].onclick = function () {
+        var div = document.createElement('div');
+        bottom.appendChild(div);
+        div.className = 'new';
+        array.push(div);
+        for(var i = 0; i<array.length; i++){
+            row = parseInt(i/count);
+            col = i % count;
+            array[i].style.left = col * (100 + margin) + 'px';
+            array[i].style.top = row * (100 + margin) + 'px';
+        }
+    };
+    btns[1].onclick = function () {
+        bottom.removeChild(array.pop());
+    }
+</script>
+</html>

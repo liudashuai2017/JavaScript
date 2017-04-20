@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-012</title>
+</head>
+<body>
+<div id="box">
+    <button>全选</button>
+    <button>反选</button>
+    <button>不选</button>
+</div>
+<div id="bottom">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+</div>
+<script>
+    var btns = document.getElementById('box').getElementsByTagName('button');
+    var inputs = document.getElementById('bottom').getElementsByTagName('input');
+    btns[0].onclick = function () {
+        for(var i = 0; i<inputs.length; i++){
+            inputs[i].checked = true;
+        }
+    };
+    btns[1].onclick = function () {
+        for(var i = 0; i<inputs.length; i++){
+            var ele = inputs[i];
+            ele.checked = !ele.checked;
+        }
+    };
+    btns[2].onclick = function () {
+        for(var i = 0; i<inputs.length; i++){
+            inputs[i].checked = false;
+        }
+    }
+</script>
+</body>
+</html>

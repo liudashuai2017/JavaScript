@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-022删除 添加标签</title>
+</head>
+<body>
+<div id="box">
+    <button id="btn" class="btn">第1个标签</button>
+    <button class="btn">第2个标签</button>
+    <button class="btn">第3个标签</button>
+</div>
+<script>
+//    子节点
+//    var box = document.getElementById('box');
+//    var btns = box.children;
+//    for(var i = 0; i < btns.length; i++){
+//        btns[i].style.background = 'red';
+//    }
+
+
+//    兄弟节点
+//    var box = document.getElementById('box');
+//    var next1 = btn.nextElementSibling;
+//    var next2 = btn.nextSibling;
+//    var next3 = btn.nextElementSibling || btn.nextSibling;
+//    next3.style.background = 'blue';
+//    console.log(next3);
+////    获取父节点
+//    console.log(btn.parentNode);
+//    类名标签
+    var box = document.getElementById('box');
+//    IE9以下版本不支持
+//    var btns = document.getElementsByClassName('btn');
+//    兼容写法
+    function getEleClassName(dom,className){
+        if(dom.getElementsByClassName){
+            return dom.getElementsByClassName(className);
+        }else {
+            var eles = dom.getElementsByClassName('*');
+            var tempArr = [];
+            for(var i = 0; i<eles.length; i++){
+                if(eles[i].className == className){
+                    tempArr.push(eles[i]);
+                }
+            }
+            return tempArr;
+        }
+    }
+    var btn1 = getEleClassName(box,'btn');
+        console.log(btn1);
+</script>
+</body>
+</html>

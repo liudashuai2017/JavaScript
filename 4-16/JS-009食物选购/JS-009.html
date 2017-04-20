@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-009</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 150px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #000;
+            line-height: 30px;
+            margin: 100px auto;
+        }
+        li{
+            list-style: none;
+        }
+        #box ul{
+            display: none;
+        }
+        #span{
+            background: url("images/up.gif") no-repeat 20px center;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span id="span">食物选取</span>
+        <ul id="food">
+            <li>苹果</li>
+            <li>香蕉</li>
+            <li>黄瓜</li>
+        </ul>
+    </div>
+    <script>
+        var box = document.getElementById('box');
+        var span = document.getElementById('span');
+        var food = document.getElementById('food');
+        box.onmouseover = function () {
+            span.style.backgroundImage = 'url("images/up.gif")';
+            food.style.display = 'block'
+        };
+        box.onmouseout = function () {
+            span.style.backgroundImage = 'url("images/down.gif")';
+            food.style.display = 'none'
+        }
+    </script>
+</body>
+</html>

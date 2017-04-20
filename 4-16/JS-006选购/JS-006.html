@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js-006</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #box{
+            width: 360px;
+            height: 70px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            padding-top: 360px;
+            background: url("images/1big.jpg");
+        }
+
+        #box ul li {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li id="li1"><img src="images/1.jpg" alt=""></li>
+        <li id="li2"><img src="images/2.jpg" alt=""></li>
+        <li id="li3"><img src="images/3.jpg" alt=""></li>
+        <li id="li4"><img src="images/4.jpg" alt=""></li>
+        <li id="li5"><img src="images/5.jpg" alt=""></li>
+    </ul>
+</div>
+<script>
+    var li1 = document.getElementById('li1');
+    var li2 = document.getElementById('li2');
+    var li3 = document.getElementById('li3');
+    var li4 = document.getElementById('li4');
+    var li5 = document.getElementById('li5');
+    var box = document.getElementById('box');
+    li1.onmouseover = function () {
+        box.style.background = 'url("images/1big.jpg")';
+    };
+    li2.onmouseover = function () {
+        box.style.background = 'url("images/2big.jpg")';
+    };
+    li3.onmouseover = function () {
+        box.style.background = 'url("images/3big.jpg")';
+    };
+    li4.onmouseover = function () {
+        box.style.background = 'url("images/4big.jpg")';
+    };
+    li5.onmouseover = function () {
+        box.style.background = 'url("images/5big.jpg")';
+    }
+</script>
+</body>
+</html>

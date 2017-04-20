@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-010</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">平移</button>
+    <button id="btn2">旋转</button>
+    <button id="btn3">缩放</button>
+    <button id="btn4">综合</button>
+    <div id="box">123</div>
+    <script>
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var btn3 = document.getElementById('btn3');
+        var btn4 = document.getElementById('btn4');
+        var box = document.getElementById('box');
+        var num = 100;
+        btn1.onclick = function () {
+            num +=100;
+            box.style.transform = 'translate('+num+'px,'+num+'px)';
+        };
+        btn2.onclick = function () {
+            box.style.transform = 'rotate(45deg)';
+        };
+        btn3.onclick = function () {
+            box.style.transform = 'scale(0.5,0.5)';
+        };
+        var offsetX = 100;
+        btn4.onclick = function () {
+            offsetX +=100;
+            box.style.transform = 'translate('+offsetX+'px,100px)  rotate(45deg)  scale(0.5,0.5)';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-18阴影</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 100px;
+            height: 150px;
+            background-color: red;
+            margin:100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #cover{
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: 0.6;
+            position: absolute;
+            left: 0;
+            top: 150px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <span id="cover"></span>
+</div>
+<script>
+    var box = document.getElementById('box');
+    var cover = document.getElementById('cover');
+    var timer = null;
+    var bigin = 150;
+    box.onmouseover = function () {
+        clearInterval(timer);
+        timer =setInterval(function () {
+            bigin-=3;
+            if(bigin <= 0){
+                clearInterval(timer);
+                bigin = 0;
+            }
+            cover.style.top = bigin + 'px';
+        },10);
+    }
+</script>
+</body>
+</html>

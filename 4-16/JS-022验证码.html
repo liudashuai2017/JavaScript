@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-022验证码</title>
+</head>
+<body>
+<input type="text">
+<button id="btn">发送验证码</button>
+<script>
+    var btn = document.getElementById('btn');
+    var timer = null;
+    var count = 5;
+    btn.onclick = function () {
+        var that = this;
+        that.disabled = true;
+        timer = window.setInterval(function () {
+            count--;
+            if(count<0){
+                clearInterval(timer);
+                count = 5;
+                that.disabled = false;
+                that.innerHTML = '重新发送验证码';
+            }else {
+                that.innerHTML = '请等待' + count + '秒';
+            }
+        },1000);
+    }
+</script>
+</body>
+</html>

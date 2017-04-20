@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-019页面跳转</title>
+</head>
+<body>
+<p id="op">页面即将跳转，剩余5秒</p>
+<script>
+    var op = document.getElementById('op');
+    var timer = setTimeout(jump,1000);
+    var count = 5;
+    function jump() {
+        clearInterval(timer);
+        count--;
+        op.innerHTML = '页面即将跳转，剩余'+count+'秒';
+        if (count<=0){
+            window.location.href = 'http://www.baidu.com';
+        }else{
+            timer = setTimeout(arguments.callee,1000);
+        }
+    }
+</script>
+</body>
+</html>

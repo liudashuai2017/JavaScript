@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-20轮播</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 600px;
+            height: 200px;
+            margin: 100px auto;
+            border: 1px solid skyblue;
+            position: relative;
+            overflow: hidden;
+        }
+        img{
+            vertical-align: top;
+        }
+        ul{
+            position: absolute;
+            left: 0;
+            top: 0;
+            list-style: none;
+            width: 9999px;
+        }
+        ul li{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul id="oul">
+        <li><img src="images/01.jpg" alt=""></li>
+        <li><img src="images/02.jpg" alt=""></li>
+        <li><img src="images/03.jpg" alt=""></li>
+        <li><img src="images/04.jpg" alt=""></li>
+        <li><img src="images/01.jpg" alt=""></li>
+        <li><img src="images/02.jpg" alt=""></li>
+    </ul>
+</div>
+<script>
+    var oul = document.getElementById('oul');
+    var begin = 0;
+    setInterval(function () {
+        begin -= 4;
+        if(begin <= -1200){
+            begin = 0;
+        }
+        oul.style.left = begin + 'px';
+    },20)
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-013九宫格</title>
+    <style>
+        #bottom{
+            position: relative;
+        }
+        #bottom button{
+            width: 50px;
+            height: 50px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<div id="top">
+    <button>三三</button>
+    <button>三四</button>
+</div>
+<div id="bottom">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+</div>
+<script>
+    var topBtns = document.getElementById('top').getElementsByTagName('button');
+    var list = document.getElementById('bottom').getElementsByTagName('button');
+    topBtns[0].onclick = function () {
+        var count = 3;
+        var col = 0;
+        var row = 0;
+        var margin = 5;
+        for(var i = 0; i<list.length; i++){
+            col = i % count ;
+            row = parseInt( i / count);
+            list[i].style.left = col * (50 + margin) + 'px';
+            list[i].style.top = row * (50 + margin) + 'px';
+            list[i].style.position = 'absolute';
+        }
+    };
+    topBtns[1].onclick = function () {
+        var count = 4;
+        var col = 0;
+        var row = 0;
+        var margin = 5;
+        for(var i = 0; i<list.length; i++) {
+            col = i % count;
+            row = parseInt(i / count);
+            list[i].style.left = col * (50 + margin) + 'px';
+            list[i].style.top = row * (50 + margin) + 'px';
+            list[i].style.position = 'absolute';
+        }
+    }
+</script>
+</body>
+</html>

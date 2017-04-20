@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点名册</title>
+    <style>
+        #box{
+            text-align: center;
+        }
+        button{
+            font-size: 50px;
+        }
+        h1{
+            text-align: center;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <button>开始</button>
+    <button>停止</button>
+</div>
+    <h1 id="name1">点名</h1>
+<script>
+    var btns = document.getElementById('box').getElementsByTagName('button');
+    var name1 = document.getElementById('name1');
+    var timer = null;
+    var arr = ['小方','小明','小花','小黄','小绿'];
+    btns[0].onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            var i = parseInt(Math.random()*arr.length);
+            name1.innerHTML = arr[i];
+        },10)
+    };
+    btns[1].onclick = function () {
+        clearInterval(timer);
+    }
+</script>
+</body>
+</html>

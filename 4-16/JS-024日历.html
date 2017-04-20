@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-024日历</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 150px;
+            height: 130px;
+            background-color: deepskyblue;
+            margin: 100px auto;
+        }
+        #box p{
+            line-height: 30px;
+            color: white;
+            font-size: 13px;
+            text-align: center;
+        }
+        #box span{
+            width: 75px;
+            height: 75px;
+            line-height: 75px;
+            display: block;
+            margin: 0 auto;
+            background-color: limegreen;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <p id="op"></p>
+    <span id="ospan"></span>
+</div>
+<script>
+    var ospan = document.getElementById('ospan');
+    var op = document.getElementById('op');
+    var date=new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var weekDay = date.getDay();
+    var weekDayArr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+    op.innerHTML = year + '年' + month + '月' + day + '日' + weekDayArr[weekDay];
+    ospan.innerHTML =day;
+</script>
+</body>
+</html>

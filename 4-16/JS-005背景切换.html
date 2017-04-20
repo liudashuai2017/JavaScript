@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-005</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            background: cornflowerblue;
+            text-align: center;
+            height: 100px;
+        }
+        div img{
+            width: 100px;
+            height: 80px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img id="pic1" src="images/1.jpg" alt="">
+    <img id="pic2" src="images/2.jpg" alt="">
+    <img id="pic3" src="images/3.jpg" alt="">
+    <img id="pic4" src="images/4.jpg" alt="">
+    <img id="pic5" src="images/5.jpg" alt="">
+</div>
+<script>
+    var body = document.body;
+    body.style.background = 'url(images/1.jpg)';
+
+    function changeSkin(id,url) {
+        var dom = document.getElementById(id);
+        dom.onclick = function () {
+            body.style.background = url;
+        };
+    }
+    changeSkin('pic1','url(images/1.jpg)');
+    changeSkin('pic2','url(images/2.jpg)');
+    changeSkin('pic3','url(images/3.jpg)');
+    changeSkin('pic4','url(images/4.jpg)');
+    changeSkin('pic5','url(images/5.jpg)');
+</script>
+</body>
+</html>

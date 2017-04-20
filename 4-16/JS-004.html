@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-004</title>
+</head>
+<body>
+<img src="images/1.png" alt="" id="img">
+<script>
+    var img= document.getElementById('img');
+    img.onmouseover = function () {
+        img.src="images/2.gif";
+    };
+    img.onmouseout = function () {
+        img.src="images/1.png";
+    }
+</script>
+</body>
+</html>
