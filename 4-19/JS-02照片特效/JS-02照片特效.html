@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-02照片特效</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body,li{
+            width: 100%;
+            height: 100%;
+        }
+        li{
+            list-style: none;
+            width: 250px;
+            height: 360px;
+            box-shadow: 0 0 10px #000;
+            background-color: #fff;
+            position: absolute;
+            transition: all 1s;
+        }
+        #ps li.new1{
+            transform: translate(-50%,-50%) scale(1.5) rotate(0deg) !important;
+            left: 50% !important;
+            top: 50% !important;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+<ul id="ps">
+    <li><img src="images/pic1.jpg" alt=""></li>
+    <li><img src="images/pic2.jpg" alt=""></li>
+    <li><img src="images/pic3.jpg" alt=""></li>
+    <li><img src="images/pic4.jpg" alt=""></li>
+    <li><img src="images/pic5.jpg" alt=""></li>
+    <li><img src="images/pic6.jpg" alt=""></li>
+    <li><img src="images/pic7.jpg" alt=""></li>
+    <li><img src="images/pic8.jpg" alt=""></li>
+    <li><img src="images/pic9.jpg" alt=""></li>
+    <li><img src="images/pic10.jpg" alt=""></li>
+</ul>
+<script src="js/underscore-min.js"></script>
+<script>
+    var allList = document.getElementById('ps').getElementsByTagName('li');
+    var windowsW = document.documentElement.clientWidth - 250;
+    var windowsH = document.documentElement.clientHeight - 360;
+    _.each(allList,function(aa){
+        aa.style.transform = 'rotate('+_.random(0,360)+'deg)';
+        aa.style.left = _.random(0,windowsW) + 'px';
+        aa.style.top = _.random(0,windowsH) + 'px';
+        aa.onclick = function () {
+            for(var i = 0; i<allList.length; i++){
+                allList[i].className = '';
+            }
+            this.className = 'new1';
+        }
+    });
+</script>
+</body>
+</html>

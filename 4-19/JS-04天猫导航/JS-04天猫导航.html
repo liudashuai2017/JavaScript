@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-04天猫导航</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background: pink;
+        }
+        #nav{
+            width: 900px;
+            height: 63px;
+            background: #fff url('images/doubleOne.png') no-repeat center right;
+            position: relative;
+            border-radius: 5px;
+            margin: 100px auto;
+        }
+        #nav ul{
+            position: relative;
+        }
+        #nav ul li{
+            width: 90px;
+            float: left;
+            text-align: center;
+            line-height: 70px;
+            cursor: pointer;
+        }
+        #t_mail{
+            width: 88px;
+            height: 63px;
+            background: url('images/tMall.png') no-repeat;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+    </style>
+</head>
+<body>
+<nav id="nav">
+    <span id="t_mail"></span>
+    <ul>
+        <li>双11狂欢</li>
+        <li>服装会场</li>
+        <li>数码家电</li>
+        <li>家具建材</li>
+        <li>母婴童装</li>
+        <li>手机会场</li>
+        <li>美妆会场</li>
+        <li>进口会场</li>
+        <li>飞猪旅行</li>
+    </ul>
+</nav>
+<script>
+    // 获取标签
+    var nav = document.getElementById('nav');
+    var t_mail = nav.children[0];
+    var allList = nav.children[1].children;
+    var begin = 0, target = 0;
+    // 鼠标记录值
+    var beginX = 0;
+    // 遍历
+    for( var i = 0; i<allList.length; i++){
+        //鼠标经过
+        allList[i].onmouseover = function () {
+            target = this.offsetLeft;
+        };
+        //鼠标停止
+        allList[i].onmouseout = function () {
+            target = beginX;
+        };
+        //鼠标点击
+        allList[i].onclick = function () {
+            beginX = this.offsetLeft;
+        };
+        //缓速动画
+        setInterval(function () {
+            begin = begin + (target - begin) / 10;
+            t_mail.style.left = begin + 'px';
+        },10)
+    }
+</script>
+</body>
+</html>

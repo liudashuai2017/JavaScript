@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-01</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 300px;
+            height: 200px;
+            border: 1px solid skyblue;
+            text-align: center;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #box ul{
+            width: 9999px;
+            list-style: none;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+        #box ul li{
+            float: left;
+        }
+        #box span{
+            width: 20px;
+            height: 20px;
+            background: rgba(0,0,0,0.7);
+            line-height: 20px;
+            text-align: center;
+            position: absolute;
+            display: inline-block;
+            color: skyblue;
+        }
+        #box span:nth-of-type(1){
+            left: 0;
+            top: 50%;
+            margin-top:-10px;
+        }
+        #box span:nth-of-type(2){
+            right: 0;
+            top: 50%;
+            margin-top: -10px;
+        }
+        #box #bottom{
+            width: 100%;
+            height: 40px;
+            text-align: center;
+            line-height: 50px;
+            position: absolute;
+            bottom: 0;
+            left: auto;
+        }
+        #box #bottom button{
+            background: rgba(0,0,0,0.1);
+            border: none;
+            color: skyblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul id="oul">
+        <li><img src="images/01.jpg" alt=""></li>
+        <li><img src="images/02.jpg" alt=""></li>
+        <li><img src="images/03.jpg" alt=""></li>
+        <li><img src="images/04.jpg" alt=""></li>
+        <li><img src="images/01.jpg" alt=""></li>
+    </ul>
+    <span> < </span>
+    <span> > </span>
+    <div id="bottom">
+        <button>●</button>
+        <button>●</button>
+        <button>●</button>
+        <button>●</button>
+        <button>●</button>
+    </div>
+</div>
+<script>
+    var btns = document.getElementById('bottom').getElementsByTagName('button');
+    var lis = document.getElementById('oul').getElementsByTagName('li');
+    var oul = document.getElementById('oul');
+    var spans = document.getElementById('box').getElementsByTagName('span');
+    var timer = null;
+    var loop = 0;
+    var speed = 10;
+    var begin =0;
+    var flag = true;
+    spans[1].onclick = function () {
+        if(flag==false)return;
+        flag = false;
+        loop++;
+        if(loop>4){
+            loop = 1;
+            begin = 0;
+        }
+        timer = setInterval(function () {
+            begin -= speed;
+            if(begin <= -300 * loop){
+                clearInterval(timer);
+                begin = -300 * loop;
+                flag = true;
+            }
+            oul.style.left = begin + 'px';
+        },10);
+    };
+    spans[0].onclick = function () {
+        if(flag == false)return;
+        flag = false;
+        loop--;
+        if(loop<0){
+            loop = 3;
+            begin = -300 * 4;
+        }
+        timer = setInterval(function () {
+            begin += speed;
+            if(begin >= -300 * loop){
+                clearInterval(timer);
+                begin = -300 * loop;
+                flag = true;
+            }
+            oul.style.left = begin + 'px';
+        },10)
+    };
+    for( var i = 0; i<btns.length; i++){
+        btns[i].index = i;
+        btns[i].onclick = function () {
+            for( i = 0 ; i<btns.length; i++){
+                btns[i].className = '';
+            }
+            this.className = 'curr';
+            for( var i = 0 ; i<lis.length; i++){
+                lis[i].style.display = 'none';
+            }
+            lis[this.index].style.display = 'block';
+        }
+    }
+</script>
+</body>
+</html>

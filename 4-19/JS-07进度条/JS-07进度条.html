@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-07进度条</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 850px;
+            height: 35px;
+            margin: 100px auto;
+            position: relative;
+        }
+        #box_left{
+            width: 800px;
+            height: 100%;
+            background-color: #CCC;
+            border-radius: 8px;
+        }
+        #box_left span{
+            width: 0;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: skyblue;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        #box_left_1{
+            width: 30px;
+            height: 49px;
+            background-color: green;
+            position: absolute;
+            left: 0;
+            top: -7px;
+            border-radius: 8px;
+        }
+        #box_right{
+            width: 30px;
+            height: 35px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            line-height: 35px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="box_left">
+        <div id="box_left_1"></div>
+        <span></span>
+    </div>
+    <div id="box_right">0%</div>
+</div>
+<script>
+    //提取标签
+    var box = $('box');
+    var box_left = box.children[0];
+    var box_right = box.children[1];
+    var box_left_1 = $('box_left_1');
+    var cover = box_left.children[1];
+    //按下鼠标
+    box_left_1.onmousedown = function (eve) {
+        var event = eve || window.event;
+        //左边边距
+        var distance = event.clientX - this.offsetLeft;
+        //进度条移动时
+        document.onmousemove = function (eve) {
+            var event = eve || window.event;
+            //移动距离
+            var offsetX = event.clientX - distance;
+            //边界距离
+            if(offsetX<= 0){
+                offsetX = 0;
+            }else if(offsetX > box_left.offsetWidth - box_left_1.offsetWidth){
+                offsetX = box_left.offsetLeft - box_left_1.offsetWidth;
+            }
+            box_left_1.style.left = offsetX + 'px';
+            //蒙版
+            cover.style.width = offsetX + 'px';
+            //进度
+            box_right.innerHTML = parseInt(offsetX / (box_left.offsetWidth - box_left_1.offsetWidth)*100)  + '%';
+        };
+        //清空默认选中
+        return false;
+    };
+    //当鼠标抬起时清空
+    document.onmouseup = function () {
+        document.onmousemove = null;
+    };
+    function $(id) {
+        return document.getElementById(id);
+    }
+</script>
+</body>
+</html>

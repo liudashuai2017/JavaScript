@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-01星星</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #000;
+        }
+        span{
+            width: 30px;
+            height: 20px;
+            background: url('images/star.png') no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            /*动画*/
+            animation: flash 1s infinite alternate;
+        }
+        @keyframes flash {
+            from{
+            /*不透明度*/
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+        span:hover{
+            transform: scale(3) rotate(180deg) !important;
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+<script>
+    <!--全屏-->
+    var windowsW = document.documentElement.clientWidth;
+    var windowsH = document.documentElement.clientHeight;
+//    星星
+    for(var i = 0; i < 150; i++){
+        var star = document.createElement('span');
+        document.body.appendChild(star);
+//    定位，随机
+        var X = Math.random() * windowsW;
+        var Y = Math.random() * windowsH;
+        star.style.left = X + 'px';
+        star.style.top = Y + 'px';
+//    不规则闪烁
+        var scale = Math.random() * 1.5;
+        star.style.transform = 'scale('+scale+')';
+        var del = Math.random() * 1.5;
+//    延时
+        star.style.animationDelay = del + 's';
+    }
+</script>
+</body>
+</html>
