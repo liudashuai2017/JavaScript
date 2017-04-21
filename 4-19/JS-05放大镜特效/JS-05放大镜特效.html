@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 350px;
+            height: 350px;
+            margin: 50px 0 0 50px;
+            position: relative;
+        }
+        #small{
+            width: 350px;
+            height: 350px;
+            border: 1px solid greenyellow;
+            position: relative;
+        }
+        #cover{
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,122,0.4);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            cursor: move;
+        }
+        #big{
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            left: 360px;
+            top: 0;
+            overflow: hidden;
+            border: 1px solid skyblue;
+            display: none;
+        }
+        #lis{
+            width: 100%;
+            border: 1px solid greenyellow;
+        }
+        #big img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #lis img{
+            padding: 10px 10px 10px 0 ;
+        }
+    </style>
+</head>
+<body>
+<!--界面-->
+<div id="box">
+    <!--左边盒子-->
+    <div id="small">
+        <img src="images/pic001.jpg" alt="">
+        <!--蒙版-->
+        <span id="cover"></span>
+    </div>
+    <!--右边盒子-->
+    <div id="big">
+        <img src="images/pic01.jpg" alt="">
+    </div>
+    <!--底部盒子-->
+    <div id="lis">
+        <img src="images/pic0001.jpg" alt="">
+        <img src="images/pic0002.jpg" alt="">
+        <img src="images/pic0003.jpg" alt="">
+    </div>
+</div>
+<script>
+    //获取标签
+    var small = $('small');
+    var small_img = small.children[0];
+    var cover = $('cover');
+    var big = $('big');
+    var big_img = big.children[0];
+    var lis_img = $('lis').children;
+    //添加事件
+    small.onmouseover = function () {
+        //显示蒙版
+        cover.style.display = 'block';
+        //显示大盒子
+        big.style.display = 'block';
+        //鼠标蒙版同步移动
+        small.onmousemove = function (eve) {
+            //边界距离
+            var event = eve || window.event;
+            var offsetX = event.clientX - this.offsetParent.offsetLeft - cover.offsetWidth/2;
+            var offsetY = event.clientY - this.offsetParent.offsetTop - cover.offsetHeight/2;
+            //边界值
+            if(offsetX < 0 ){
+                offsetX = 0;
+            }else if(offsetX > small.offsetWidth - cover.offsetWidth -2){
+                offsetX = small.offsetWidth - cover.offsetWidth -2;
+            }
+            if(offsetY < 0){
+                offsetY = 0;
+            }else if(offsetY > small.offsetHeight - cover.offsetHeight -2){
+                offsetY = small.offsetHeight - cover.offsetHeight -2;
+            }
+            //当蒙版移动时
+            cover.style.left = offsetX + 'px';
+            cover.style.top = offsetY + 'px';
+            //大盒子跟随蒙版一起移动
+            // 蒙版移动距离/小盒子宽度=大盒子移动距离/大盒子宽度
+            big_img.style.left = - offsetX / small.offsetWidth * big.offsetWidth + 'px';
+            big_img.style.top = - offsetY / small.offsetHeight * big.offsetHeight + 'px';
+        }
+    };
+    //隐藏
+    small.onmouseout = function () {
+        cover.style.display = 'none';//蒙版
+        big.style.display = 'none';//大盒子
+    };
+    //切换底部图片
+    //遍历
+    for( var i = 0; i<lis_img.length; i++){
+        lis_img[i].index = i;
+        //当小盒子里面图片切换时，大盒子里面图片跟随切换
+        lis_img[i].onmouseover = function () {
+            small_img.src = "images/pic00"+ (this.index+1) +".jpg";
+            big_img.src = "images/pic0"+ (this.index+1) +".jpg"
+        }
+    }
+    function $(id) {
+        return document.getElementById(id);
+    }
+</script>
+</body>
+</html>
